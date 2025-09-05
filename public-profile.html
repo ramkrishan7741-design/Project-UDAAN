@@ -310,7 +310,7 @@
     </div>
 
     <script>
-        function loadProfile() {
+        async function loadProfile() {
             const beneficiaryId = localStorage.getItem('selectedBeneficiaryId');
             
             if (!beneficiaryId) {
@@ -318,7 +318,22 @@
                 return;
             }
 
-            const beneficiaries = JSON.parse(localStorage.getItem('beneficiaries') || '[]');
+            // Try to load beneficiaries from localStorage first, then from JSON file
+            let beneficiaries = JSON.parse(localStorage.getItem('beneficiaries') || '[]');
+            
+            // If no data in localStorage, try to fetch from beneficiaries-data.json
+            if (beneficiaries.length === 0) {
+                try {
+                    const response = await fetch('beneficiaries-data.json');
+                    if (response.ok) {
+                        const data = await response.json();
+                        beneficiaries = data.beneficiaries || [];
+                    }
+                } catch (error) {
+                    console.log('Could not load beneficiaries-data.json:', error);
+                }
+            }
+            
             const beneficiary = beneficiaries.find(b => b.id === beneficiaryId);
             
             if (!beneficiary) {
