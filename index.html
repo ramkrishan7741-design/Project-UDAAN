@@ -1,0 +1,1026 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project UDAAN - Empowering Abilities, Building Careers</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #1e3a8a;
+            --secondary-blue: #3b82f6;
+            --primary-orange: #f97316;
+            --secondary-orange: #fb923c;
+            --accent-yellow: #fbbf24;
+            --light-gray: #f8fafc;
+            --dark-gray: #1f2937;
+            --success-green: #10b981;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+        }
+
+
+
+        /* Navigation */
+        .navbar {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            font-weight: 700;
+            color: white !important;
+        }
+
+        .brand-text {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: white;
+            letter-spacing: 1px;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-link {
+            color: white !important;
+            font-weight: 500;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-yellow) !important;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary-blue) 0%, var(--secondary-blue) 50%, var(--primary-orange) 100%);
+            color: white;
+            padding: 0;
+            position: relative;
+            overflow: hidden;
+            height: auto;
+            min-height: 709px;
+            width: 100%;
+        }
+
+        .hero-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
+        }
+
+        .decorative-pattern {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M 50 0 L 0 0 0 50" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .decorative-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .shape-1 {
+            width: 80px;
+            height: 80px;
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .shape-2 {
+            width: 120px;
+            height: 120px;
+            top: 60%;
+            right: 15%;
+            animation-delay: 2s;
+        }
+
+        .shape-3 {
+            width: 60px;
+            height: 60px;
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 4s;
+        }
+
+        .shape-4 {
+            width: 100px;
+            height: 100px;
+            top: 30%;
+            right: 30%;
+            animation-delay: 1s;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+        }
+
+        .hero-image-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 2;
+            width: 100%;
+            height: 100%;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+
+
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .btn-learn-more {
+            background: var(--accent-yellow);
+            color: var(--dark-gray);
+            border: none;
+            padding: 12px 30px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-learn-more:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(251, 191, 36, 0.4);
+        }
+
+        /* Mission Section */
+        .mission-section {
+            background: var(--light-gray);
+            padding: 80px 0;
+        }
+
+        .section-title {
+            color: var(--primary-blue);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .mission-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .mission-text {
+            font-size: 1.2rem;
+            color: var(--dark-gray);
+            line-height: 1.8;
+        }
+
+        /* About Us Section */
+        .about-section {
+            background: white;
+            padding: 80px 0;
+        }
+
+        .about-content {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        .about-card {
+            background: white;
+            padding: 40px 30px;
+            border-radius: 28px;
+            text-align: center;
+            border: 1px solid #f1f5f9;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.06);
+            transition: all 0.4s ease;
+            min-height: 380px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+        }
+
+        .about-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-orange));
+        }
+
+        .about-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            border-color: #e2e8f0;
+        }
+
+        .card-icon {
+            width: 90px;
+            height: 90px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-orange));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px auto;
+            box-shadow: 0 12px 35px rgba(30, 58, 138, 0.25);
+            transition: all 0.3s ease;
+        }
+
+        .about-card:hover .card-icon {
+            transform: scale(1.1);
+            box-shadow: 0 16px 45px rgba(30, 58, 138, 0.35);
+        }
+
+        .card-icon i {
+            font-size: 2.2rem;
+            color: white;
+        }
+
+        .about-card h4 {
+            color: var(--primary-blue);
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 25px;
+            line-height: 1.3;
+            letter-spacing: 0.5px;
+        }
+
+        .about-card p {
+            color: var(--dark-gray);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin: 0;
+            flex-grow: 1;
+            font-weight: 500;
+        }
+
+        .about-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .about-card h4 {
+            color: var(--primary-blue);
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .about-card p {
+            color: var(--dark-gray);
+            font-size: 1rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        @keyframes fadeInScale {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* People UDAAN Candidates Section */
+        .candidates-section {
+            background: linear-gradient(135deg, #ffffff, #f8fafc);
+            padding: 80px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .candidates-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1" fill="%23e5e7eb" opacity="0.3"/></pattern></defs><rect width="100%" height="100%" fill="url(%23dots)"/></svg>');
+            opacity: 0.5;
+        }
+
+        .candidates-section .container {
+            position: relative;
+            z-index: 2;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #64748b;
+            font-size: 1.1rem;
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            font-weight: 500;
+            line-height: 1.6;
+        }
+
+        .candidates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin-bottom: 50px;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .candidate-card {
+            background: white;
+            border-radius: 16px;
+            padding: 20px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid #f1f5f9;
+            position: relative;
+            overflow: hidden;
+            min-height: 280px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .candidate-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(45deg, var(--primary-blue), var(--primary-orange));
+        }
+
+        .candidate-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+            border-color: #e2e8f0;
+        }
+
+        .candidate-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 18px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        .candidate-photo {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+            border: 2px solid var(--primary-blue);
+            box-shadow: 0 2px 8px rgba(30, 58, 138, 0.2);
+        }
+
+        .candidate-photo-placeholder {
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-blue), var(--primary-orange));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 1.4rem;
+            margin-right: 15px;
+            box-shadow: 0 2px 8px rgba(30, 58, 138, 0.2);
+        }
+
+        .candidate-info h3 {
+            color: var(--dark-gray);
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin: 0 0 5px 0;
+        }
+
+        .candidate-info p {
+            color: #6b7280;
+            font-size: 0.9rem;
+            margin: 0;
+        }
+
+        .candidate-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 18px;
+            flex-grow: 1;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            padding: 8px 0;
+        }
+
+        .detail-item i {
+            color: var(--primary-blue);
+            width: 16px;
+            opacity: 0.8;
+        }
+
+        .detail-label {
+            color: #64748b;
+            font-weight: 500;
+            font-size: 0.8rem;
+        }
+
+        .detail-value {
+            color: var(--dark-gray);
+            font-weight: 600;
+            font-size: 0.85rem;
+        }
+
+        .candidate-skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 18px;
+        }
+
+        .skill-tag {
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
+            color: white;
+            padding: 6px 12px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            box-shadow: 0 2px 6px rgba(30, 58, 138, 0.2);
+        }
+
+        .candidate-status {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+            padding-top: 15px;
+            border-top: 1px solid #f1f5f9;
+        }
+
+        .status-badge {
+            padding: 6px 12px;
+            border-radius: 16px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .status-active {
+            background: #dcfce7;
+            color: #166534;
+            border: 1px solid #bbf7d0;
+        }
+
+        .status-placed {
+            background: #dbeafe;
+            color: #1e40af;
+            border: 1px solid #93c5fd;
+        }
+
+        .candidates-cta {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(45deg, var(--primary-blue), var(--primary-orange));
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(30, 58, 138, 0.3);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 35px rgba(30, 58, 138, 0.4);
+            color: white;
+        }
+
+        .cta-button i {
+            font-size: 1.2rem;
+        }
+
+        /* Partner Logos Section */
+        .partners-section {
+            background: white;
+            padding: 80px 0;
+        }
+
+        .partner-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .partner-box {
+            background: var(--light-gray);
+            border: 2px dashed var(--secondary-blue);
+            border-radius: 15px;
+            padding: 0;
+            text-align: center;
+            transition: all 0.3s ease;
+            min-height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .partner-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.6));
+            color: white;
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .partner-toggle {
+            text-align: center;
+        }
+
+        .toggle-arrow {
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            padding: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .toggle-arrow:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: scale(1.1);
+        }
+
+
+
+        .partner-box:hover {
+            border-color: var(--primary-orange);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .partner-subtitle {
+            color: #6b7280;
+            font-size: 0.8rem;
+            margin-bottom: 10px;
+            font-style: italic;
+        }
+
+        .partner-arrow {
+            color: var(--primary-blue);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .partner-box:hover .partner-arrow {
+            transform: translateX(5px);
+            color: var(--primary-orange);
+        }
+
+
+
+        .partner-box:hover {
+            border-color: var(--primary-orange);
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .partner-placeholder {
+            color: var(--secondary-blue);
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark-gray);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+            
+            .partner-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .navbar-brand {
+                font-size: 1.2rem;
+            }
+            
+            .navbar-brand img {
+                height: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <span class="brand-text">PROJECT UDAAN</span>
+            </a>
+            
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="candidates.html"><i class="fas fa-users"></i> UDAAN Candidates</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="udaan-placement.html"><i class="fas fa-briefcase"></i> UDAAN Placement</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#partners"><i class="fas fa-handshake"></i> Our Partners</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about-us"><i class="fas fa-info-circle"></i> About Us</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-background">
+            <div class="decorative-pattern"></div>
+            <div class="decorative-shapes">
+                <div class="shape shape-1"></div>
+                <div class="shape shape-2"></div>
+                <div class="shape shape-3"></div>
+                <div class="shape shape-4"></div>
+            </div>
+        </div>
+        <div class="hero-image-container">
+            <img src="hero-banner.png" alt="Project UDAAN Hero Banner" class="hero-image">
+        </div>
+    </section>
+
+
+
+    <!-- About Us Section -->
+    <section id="about-us" class="about-section">
+        <div class="container">
+            <div class="about-content">
+                <h2 class="section-title">About Us</h2>
+                <div class="about-grid">
+                    <div class="about-card">
+                        <div class="card-icon">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <h4>Who We Are</h4>
+                        <p>Project Udaan was started by three changemakers — Ramkrishan Rawat, Vedant Poddar, and Mrityunjay Singh Rajawat — We as a team recognized the gap between the immense potential of persons with disabilities and the lack of opportunities available to them. We believed that while mobility solutions like prosthetics can restore physical movement, true empowerment comes only when individuals are able to earn, build careers, and live with dignity. With this vision, Project Udaan was born — to bridge the gap between ability and opportunity.</p>
+                    </div>
+                    
+                    <div class="about-card">
+                        <div class="card-icon">
+                            <i class="fas fa-bullseye"></i>
+                        </div>
+                        <h4>Our Mission</h4>
+                        <p>Our mission is to provide persons with disabilities with access to meaningful employment opportunities that restore dignity, independence, and confidence. We believe that every individual has the right to contribute to society, and we work to ensure that no disability becomes a barrier to livelihood.</p>
+                    </div>
+                    
+                    <div class="about-card">
+                        <div class="card-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h4>Why It Matters</h4>
+                        <p>Employment is more than a source of income — it is a pathway to self-respect, identity, and independence. By connecting persons with disabilities to jobs, Project UdaAN is not only helping them provide for their families but also enabling them to take their rightful place in society. The impact goes beyond a paycheck: it builds confidence, breaks social stigma, and creates long-term change by proving that ability, not disability, defines a person's future.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- People UDAAN Candidates Section -->
+    <section class="candidates-section">
+        <div class="container">
+            <h2 class="section-title">UDAAN Candidates</h2>
+            <p class="section-subtitle">Meet our 6 most recent active candidates who are ready to build their careers</p>
+            
+            <div class="candidates-grid" id="candidatesGrid">
+                <!-- Cards will be loaded dynamically -->
+            </div>
+            
+            <div class="candidates-cta">
+                <p style="color: #64748b; margin-bottom: 20px; font-size: 0.9rem;">
+                    <i class="fas fa-info-circle" style="margin-right: 8px; color: var(--primary-blue);"></i>
+                    Showing 6 most recent active candidates
+                </p>
+                <div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+                    <a href="candidates.html" class="cta-button">
+                        <i class="fas fa-users"></i>
+                        View All Candidates
+                    </a>
+                    <a href="udaan-placement.html" class="cta-button" style="background: linear-gradient(45deg, var(--success-green), #34d399);">
+                        <i class="fas fa-briefcase"></i>
+                        View Placements
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partner Logos Section -->
+    <section id="partners" class="partners-section">
+        <div class="container">
+            <h2 class="section-title">Our Partners</h2>
+            <div class="partner-grid">
+                <div class="partner-box">
+                    <img src="JaipurFoot.webp" alt="Jaipur Foot" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="partner-overlay">
+                        <div class="partner-toggle">
+                            <i class="fas fa-arrow-right toggle-arrow" onclick="openJaipurFootPage()"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="partner-box">
+                    <div class="partner-placeholder">
+                        <i class="fas fa-handshake fa-3x mb-3"></i>
+                        <p>Partner Logo 2</p>
+                    </div>
+                </div>
+                <div class="partner-box">
+                    <div class="partner-placeholder">
+                        <i class="fas fa-users fa-3x mb-3"></i>
+                        <p>Partner Logo 3</p>
+                    </div>
+                </div>
+                <div class="partner-box">
+                    <div class="partner-placeholder">
+                        <i class="fas fa-globe fa-3x mb-3"></i>
+                        <p>Partner Logo 4</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div style="text-align: center; padding: 20px 0; border-top: 1px solid #e5e7eb; margin-top: 40px;">
+                <div style="color: #9ca3af; font-size: 0.8rem; margin-bottom: 10px;">
+                    <a href="login.html" style="color: #6b7280; text-decoration: none; opacity: 0.6; transition: opacity 0.3s ease;" 
+                       onmouseover="this.style.opacity='1'" onmouseout="this.style.opacity='0.6'">
+                        <i class="fas fa-user-shield"></i> Admin Access
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Smooth Scrolling -->
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Navbar background change on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.background = 'rgba(30, 58, 138, 0.95)';
+            } else {
+                navbar.style.background = 'linear-gradient(135deg, var(--primary-blue), var(--secondary-blue))';
+            }
+        });
+
+        // Load and display candidate cards
+        function loadCandidates() {
+            const candidatesGrid = document.getElementById('candidatesGrid');
+            const beneficiaries = JSON.parse(localStorage.getItem('beneficiaries') || '[]');
+            
+            if (beneficiaries.length === 0) {
+                candidatesGrid.innerHTML = `
+                    <div style="grid-column: 1 / -1; text-align: center; padding: 50px;">
+                        <i class="fas fa-users" style="font-size: 3rem; color: #6b7280; margin-bottom: 20px;"></i>
+                        <h3 style="color: #6b7280; margin-bottom: 10px;">No Candidates Yet</h3>
+                        <p style="color: #9ca3af;">Be the first to join our amazing community!</p>
+                    </div>
+                `;
+                return;
+            }
+
+            // Filter out placed candidates and show only the 6 most recent active candidates
+            const activeCandidates = beneficiaries.filter(beneficiary => 
+                beneficiary.status !== 'self-employed' && beneficiary.status !== 'placed'
+            );
+            const displayCandidates = activeCandidates.slice(0, 6);
+            
+            candidatesGrid.innerHTML = displayCandidates.map(beneficiary => {
+                const statusClass = 'status-active';
+                const statusText = 'ACTIVE';
+                
+                // Format skills
+                const skills = beneficiary.skills ? (Array.isArray(beneficiary.skills) ? beneficiary.skills : [beneficiary.skills]) : [];
+                const skillsHtml = skills.slice(0, 3).map(skill => `<span class="skill-tag">${skill}</span>`).join('');
+                
+                // Photo or placeholder
+                const photoHtml = beneficiary.photo && beneficiary.photo.startsWith('data:') 
+                    ? `<img src="${beneficiary.photo}" alt="${beneficiary.name}" class="candidate-photo">`
+                    : `<div class="candidate-photo-placeholder">${beneficiary.name.charAt(0)}</div>`;
+                
+                return `
+                    <div class="candidate-card">
+                        <div class="candidate-header">
+                            ${photoHtml}
+                            <div class="candidate-info">
+                                <h3>${beneficiary.name}</h3>
+                                <p>ID: ${beneficiary.id}</p>
+                            </div>
+                        </div>
+                        
+                        <div class="candidate-details">
+                            <div class="detail-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span class="detail-label">Location:</span>
+                                <span class="detail-value">${beneficiary.city || 'Not specified'}</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-graduation-cap"></i>
+                                <span class="detail-label">Education:</span>
+                                <span class="detail-value">${beneficiary.education || 'Not specified'}</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-wheelchair"></i>
+                                <span class="detail-label">Support:</span>
+                                <span class="detail-value">${beneficiary.supportNeeded ? (Array.isArray(beneficiary.supportNeeded) ? beneficiary.supportNeeded[0] : beneficiary.supportNeeded) : 'Not specified'}</span>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-phone"></i>
+                                <span class="detail-label">Contact:</span>
+                                <span class="detail-value">${beneficiary.contact || 'Not specified'}</span>
+                            </div>
+                        </div>
+                        
+                        ${skillsHtml ? `<div class="candidate-skills">${skillsHtml}</div>` : ''}
+                        
+                        <div class="candidate-status">
+                            <span class="status-badge ${statusClass}">${statusText}</span>
+                            <small style="color: #6b7280;">Ready for opportunities</small>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Load candidates when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            loadCandidates();
+        });
+
+        // Open Jaipur Foot page
+        function openJaipurFootPage() {
+            window.open('jaipur-foot.html', '_blank');
+        }
+    </script>
+</body>
+</html>
