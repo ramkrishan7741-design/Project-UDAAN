@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Status - Project UDAAN</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .beneficiary-item {
+            background: #f8f9fa;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border-left: 4px solid #007bff;
+        }
+        .status-active {
+            background: #d4edda;
+            color: #155724;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        .status-placed {
+            background: #cce5ff;
+            color: #004085;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #0056b3;
+        }
+        .danger {
+            background: #dc3545;
+        }
+        .danger:hover {
+            background: #c82333;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Beneficiary Status Test</h1>
+        <p>This page helps you check and fix beneficiary statuses.</p>
+        
+        <button onclick="loadBeneficiaries()">Load All Beneficiaries</button>
+        <button onclick="fixStatuses()" class="danger">Fix All Statuses (Set to Active)</button>
+        <button onclick="clearData()" class="danger">Clear All Data</button>
+        
+        <div id="beneficiariesList"></div>
+    </div>
+
+    <script>
+        function loadBeneficiaries() {
+            const beneficiaries = JSON.parse(localStorage.getItem('beneficiaries') || '[]');
+            const container = document.getElementById('beneficiariesList');
+            
+            if (beneficiaries.length === 0) {
+                container.innerHTML = '<p>No beneficiaries found.</p>';
+                return;
+            }
+            
+            let html = '<h3>Current Beneficiaries:</h3>';
+            beneficiaries.forEach((beneficiary, index) => {
+                const statusClass = beneficiary.status === 'self-employed' ? 'status-placed' : 'status-active';
+                const statusText = beneficiary.status === 'self-employed' ? 'PLACED' : 'ACTIVE';
+                
+                html += `
+                    <div class="beneficiary-item">
+                        <strong>${beneficiary.name}</strong> (ID: ${beneficiary.id})<br>
+                        Status: <span class="${statusClass}">${statusText}</span><br>
+                        Raw Status: "${beneficiary.status}"<br>
+                        <button onclick="fixStatus(${index})">Fix This Status</button>
+                    </div>
+                `;
+            });
+            
+            container.innerHTML = html;
+        }
+        
+        function fixStatus(index) {
+            const beneficiaries = JSON.parse(localStorage.getItem('beneficiaries') || '[]');
+            if (beneficiaries[index]) {
+                beneficiaries[index].status = 'unemployed';
+                localStorage.setItem('beneficiaries', JSON.stringify(beneficiaries));
+                alert('Status fixed!');
+                loadBeneficiaries();
+            }
+        }
+        
+        function fixStatuses() {
+            if (confirm('This will set ALL beneficiaries to ACTIVE (unemployed) status. Continue?')) {
+                const beneficiaries = JSON.parse(localStorage.getItem('beneficiaries') || '[]');
+                beneficiaries.forEach(beneficiary => {
+                    beneficiary.status = 'unemployed';
+                });
+                localStorage.setItem('beneficiaries', JSON.stringify(beneficiaries));
+                alert('All statuses fixed!');
+                loadBeneficiaries();
+            }
+        }
+        
+        function clearData() {
+            if (confirm('This will delete ALL beneficiary data. Are you sure?')) {
+                localStorage.clear();
+                alert('All data cleared!');
+                loadBeneficiaries();
+            }
+        }
+        
+        // Load beneficiaries on page load
+        loadBeneficiaries();
+    </script>
+</body>
+</html>
